@@ -12,7 +12,7 @@ app.use(cors({
     origin: 'http://localhost:3001' // Replace with your frontend's origin
 }));
 
-app.get('/api/data', async (req, res) => {
+app.get('/api/city', async (req, res) => {
     const { city_name } = req.query;
     const limit = 5;
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=${limit}&appid=${API_KEY}`);

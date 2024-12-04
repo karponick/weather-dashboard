@@ -22,7 +22,7 @@ const SearchBar = () => {
             event.preventDefault();
         }
         fetch(
-            `${process.env.REACT_APP_API_URL}?city_name=${city}`
+            `${process.env.REACT_APP_API_CITY_URL}?city_name=${city}`
         )
             .then((response) => {
                 if (!response.ok) throw new Error("Error fetching data");
