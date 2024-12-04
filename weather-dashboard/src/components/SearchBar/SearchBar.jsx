@@ -36,9 +36,9 @@ const SearchBar = () => {
     };
     return (
         <div>
-            <h2>Cities</h2>
-            <form className="searchCities">
-                <input type="text" name="city" id="city" onChange={handleInput} onKeyUp={fetchCities} />
+            <h1>Cities</h1>
+            <form>
+                <input className={styles.searchBar} type="text" name="city" id="city" onChange={handleInput} onKeyUp={fetchCities} />
 
             </form>
             {results && (

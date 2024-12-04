@@ -1,10 +1,17 @@
 .city {
     border: 1px solid gray;
-    margin: 1em;
+    margin: 1em auto;
     padding: 1em;
-    width: fit-content;
+    width: 33%;
+    border-radius: 1em;
 }
 
 .city:hover {
-    border: 1px solid black;
+    box-shadow: 1px 1px 4px 1px black;
+}
+
+.searchBar {
+    padding: 1%;
+    width: size;
+    font-size: larger;
 }
