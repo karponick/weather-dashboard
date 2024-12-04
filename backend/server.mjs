@@ -20,4 +20,13 @@ app.get('/api/data', async (req, res) => {
     res.json(data);
 });
 
+app.get('/api/weather', async (req, res) => {
+    // vars/query params
+
+    // request
+    const response = await fetch('<api request url>');
+    const data = await response.json();
+    res.json(data);
+});
+
 app.listen(3000, () => console.log('Server running on port 3000'));

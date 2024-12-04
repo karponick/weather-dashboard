@@ -24,7 +24,10 @@ const SearchBar = () => {
                 return response.json();
             })
             .then((data) => {
-                if (data.cod) throw new Error("No geodata");
+                if (data.cod) {
+                    setResults([]);
+                    throw new Error("No geodata");
+                }
                 else {
                     setResults(data);
                     console.log(data);

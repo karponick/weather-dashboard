@@ -26,7 +26,7 @@ install package:
 Start backend:
 - node server.mjs
 
-###Open a terminal in the frontend folder:
+### Open a terminal in the frontend folder:
 install package:
 - npm install react-scripts
 Start frontend:
