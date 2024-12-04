@@ -22,9 +22,8 @@ const SearchBar = () => {
                 return response.json();
             })
             .then((data) => {
-                setResults(data.response.docs);
+                setResults(data);
                 console.log(data);
-                console.log(data.response);
             })
             .catch((error) => {
                 console.error(error.message);
@@ -42,8 +41,7 @@ const SearchBar = () => {
                 <div>
                     {results.map((results, index) => (
                         <div key={index}>
-                            <h2>{results.name}</h2>
-                            <p>{results.country}</p>
+                            <p>{results.name}, {results.state}, {results.country}</p>
                         </div>
                     ))}
                 </div>
