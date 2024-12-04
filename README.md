@@ -22,12 +22,12 @@ PORT=3001
 
 ### Open a terminal in the backend folder:
 install package:
-- npm install express
+- npm install express<br/>
 Start backend:
 - node server.mjs
 
 ### Open a terminal in the frontend folder:
 install package:
-- npm install react-scripts
+- npm install react-scripts<br/>
 Start frontend:
 - npm start
