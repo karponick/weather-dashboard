@@ -1,0 +1,10 @@
+.city {
+    border: 1px solid gray;
+    margin: 1em;
+    padding: 1em;
+    width: fit-content;
+}
+
+.city:hover {
+    border: 1px solid black;
+}
