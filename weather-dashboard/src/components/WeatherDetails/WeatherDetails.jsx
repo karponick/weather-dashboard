@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import styles from './WeatherDetails.module.css';
 
-const weatherDetails = ({ weatherData }) => {
+const WeatherDetails = ({ weatherData }) => {
   if (!weatherData) {
     return <p>Please select a city to view the weather details.</p>;
   }

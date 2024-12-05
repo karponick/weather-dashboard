@@ -2,10 +2,10 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/SearchBar/SearchBar';
-import WeatherDetailsComponent from './components/WeatherDetails/WeatherDetailsComponent';
-import AirDetailsComponent from './components/AirDetails/AirDetailsComponent';
-import SunDetailsComponent from './components/SunDetails/SunDetailsComponent';
-import HourlyTemperatureComponent from './components/HourlyTemperature/HourlyTemperatureComponent';
+import WeatherDetails from './components/WeatherDetails/WeatherDetails';
+import AirDetails from './components/AirDetails/AirDetails';
+import SunDetails from './components/SunDetails/SunDetails';
+import HourlyTemperature from './components/HourlyTemperature/HourlyTemperature';
 import { fetchWeatherData } from './services/api';
 
 const App = () => {
@@ -50,9 +50,9 @@ const App = () => {
               <SearchBar onCitySelect={handleCitySelect} />
               {weatherData && (
                 <>
-                  <WeatherDetailsComponent weatherData={weatherData} />
-                  <AirDetailsComponent airData={airData} />
-                  <SunDetailsComponent sunData={sunData} />
+                  <WeatherDetails weatherData={weatherData} />
+                  <AirDetails airData={airData} />
+                  <SunDetails sunData={sunData} />
                 </>
               )}
             </div>
@@ -62,7 +62,7 @@ const App = () => {
           path="/hourly-temperature"
           element={
             selectedCity ? (
-              <HourlyTemperatureComponent lat={selectedCity.lat} lon={selectedCity.lon} />
+              <HourlyTemperature lat={selectedCity.lat} lon={selectedCity.lon} />
             ) : (
               <p>Please select a city first to view hourly data.</p>
             )
