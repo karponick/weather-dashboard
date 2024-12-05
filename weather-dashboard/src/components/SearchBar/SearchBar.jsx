@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from './SearchBar.module.css';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState(""); // city search input
     const [results, setResults] = useState([]);
 
     // event to handle typing city name
@@ -13,7 +13,10 @@ const SearchBar = () => {
     // event to handle clicking on city div
     const handleClick = (event) => {
         const clickedDiv = event.target;
-        console.log("Clicked div:", clickedDiv);
+        // console.log("Clicked div:", clickedDiv);
+        var selectedIndex = clickedDiv.attributes["name"].value;
+        // console.log(results[selectedIndex]);
+        props.onCitySelect(results[selectedIndex]);
     };
 
     // event to send request through proxy server
@@ -26,7 +29,7 @@ const SearchBar = () => {
         )
             .then((response) => {
                 if (!response.ok) throw new Error("Error fetching data");
-                console.log(city);
+                // console.log(city);
                 return response.json();
             })
             .then((data) => {
@@ -36,7 +39,7 @@ const SearchBar = () => {
                 }
                 else {
                     setResults(data);
-                    console.log(data);
+                    // console.log(data);
                 }
             })
             .catch((error) => {
@@ -44,17 +47,17 @@ const SearchBar = () => {
             });
     };
     return (
-        <div>
-            <h1>Cities</h1>
+        <div className={styles.searchBar}>
+            <h1>City Search</h1>
             <form>
-                <input className={styles.searchBar} type="text" name="city" id="city" onChange={handleInput} onKeyUp={fetchCities} />
+                <input className={styles.input} type="text" name="city" id="city" onChange={handleInput} onKeyUp={fetchCities} />
                 {results.length === 0 ? <p>No results</p> : null}
             </form>
             {results && (
                 <div>
                     {results.map((results, index) => (
                         <div key={index}>
-                            <div id={"city" + index} className={styles.city} onClick={handleClick}>{results.name}, {results.state}, {results.country}</div>
+                            <div id={"city" + index} name={index} className={styles.city} onClick={handleClick}>{results.name}, {results.state}, {results.country}</div>
                         </div>
                     ))}
                 </div>

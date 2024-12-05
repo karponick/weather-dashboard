@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/SearchBar/SearchBar';
 import WeatherDetails from './components/WeatherDetails/WeatherDetails';
 import AirDetails from './components/AirDetails/AirDetails';
@@ -18,7 +18,7 @@ const App = () => {
     setSelectedCity(city);
     try {
       const data = await fetchWeatherData(city.lat, city.lon);
-
+      // console.log(data);
       setWeatherData({
         cityName: city.name,
         temperature: data.current.temp,
@@ -50,7 +50,11 @@ const App = () => {
               <SearchBar onCitySelect={handleCitySelect} />
               {weatherData && (
                 <>
-                  <WeatherDetails weatherData={weatherData} />
+                  <div class="hourly">
+                    <Link to="/hourly-temperature">
+                      <WeatherDetails weatherData={weatherData} />
+                    </Link>
+                  </div>
                   <AirDetails airData={airData} />
                   <SunDetails sunData={sunData} />
                 </>
@@ -69,7 +73,7 @@ const App = () => {
           }
         />
       </Routes>
-    </Router>
+    </Router >
   );
 };
 

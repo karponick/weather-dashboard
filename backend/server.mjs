@@ -22,9 +22,12 @@ app.get('/api/city', async (req, res) => {
 
 app.get('/api/weather', async (req, res) => {
     // vars/query params
-
+    const { lat } = req.query;
+    const { lon } = req.query;
+    // const { units } = "imperial";
     // request
-    const response = await fetch('<api request url>');
+    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+    // const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`);
     const data = await response.json();
     res.json(data);
 });
