@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
+import styles from './SunDetails.module.css'; 
 
-const SunDetails = ({ sunrise, sunset }) => {
-  const formatTime = (timestamp) => {
-    return new Date(timestamp * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
+const SunDetails = ({ sunData }) => {
+  if (!sunData) {
+    return <p>No sun details available. Please select a city.</p>;
+  }
 
   return (
-    <div className="sun-details">
+    <div className={styles.sunDetails}>
       <h3>Sun Details</h3>
-      <p>Sunrise: {formatTime(sunrise)}</p>
-      <p>Sunset: {formatTime(sunset)}</p>
+      <div className={styles.detailsCard}>
+        <p><strong>Sunrise:</strong> {sunData.sunrise}</p>
+        <p><strong>Sunset:</strong> {sunData.sunset}</p>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,18 @@
-import React from 'react';
+import React from "react";
+import styles from './AirDetails.module.css';
 
-const AirDetails = ({ humidity, windSpeed }) => {
+const AirDetails = ({ airData }) => {
+  if (!airData) {
+    return <p>No air details available. Please select a city.</p>;
+  }
+
   return (
-    <div className="air-details">
+    <div className={styles.airDetails}>
       <h3>Air Details</h3>
-      <p>Humidity: {humidity}%</p>
-      <p>Wind Speed: {windSpeed} mph</p>
+      <div className={styles.detailsCard}>
+        <p><strong>Humidity:</strong> {airData.humidity}%</p>
+        <p><strong>Wind Speed:</strong> {airData.windSpeed} mph</p>
+      </div>
     </div>
   );
 };

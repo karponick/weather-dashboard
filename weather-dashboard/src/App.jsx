@@ -1,22 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/SearchBar/SearchBar';
-import WeatherDetails from './components/WeatherDetails';
-import AirDetails from './components/AirDetails';
-import SunDetails from './components/SunDetails';
-import HourlyTemperature from './components/HourlyTemperature';
-
+import WeatherDetailsComponent from './components/WeatherDetails/WeatherDetailsComponent';
+import AirDetailsComponent from './components/AirDetails/AirDetailsComponent';
+import SunDetailsComponent from './components/SunDetails/SunDetailsComponent';
+import HourlyTemperatureComponent from './components/HourlyTemperature/HourlyTemperatureComponent';
+import { fetchWeatherData } from './services/api';
 
 const App = () => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
+  const [airData, setAirData] = useState(null);
+  const [sunData, setSunData] = useState(null);
 
   const handleCitySelect = async (city) => {
     setSelectedCity(city);
-    const data = await fetchWeatherData(city.lat, city.lon);
-    setWeatherData(data);
+    try {
+      const data = await fetchWeatherData(city.lat, city.lon);
+
+      setWeatherData({
+        cityName: city.name,
+        temperature: data.current.temp,
+        feels_like: data.current.feels_like,
+        description: data.current.weather[0].description,
+      });
+
+      setAirData({
+        humidity: data.current.humidity,
+        windSpeed: data.current.wind_speed,
+      });
+
+      setSunData({
+        sunrise: new Date(data.current.sunrise * 1000).toLocaleTimeString(),
+        sunset: new Date(data.current.sunset * 1000).toLocaleTimeString(),
+      });
+    } catch (error) {
+      console.error('Error fetching weather details:', error.message);
+    }
   };
 
   return (
@@ -26,18 +47,12 @@ const App = () => {
           path="/"
           element={
             <div>
-              <SearchComponent onCitySelect={handleCitySelect} />
+              <SearchBar onCitySelect={handleCitySelect} />
               {weatherData && (
                 <>
                   <WeatherDetailsComponent weatherData={weatherData} />
-                  <AirDetailsComponent
-                    humidity={weatherData.humidity}
-                    windSpeed={weatherData.wind_speed}
-                  />
-                  <SunDetailsComponent
-                    sunrise={weatherData.sunrise}
-                    sunset={weatherData.sunset}
-                  />
+                  <AirDetailsComponent airData={airData} />
+                  <SunDetailsComponent sunData={sunData} />
                 </>
               )}
             </div>
@@ -45,12 +60,17 @@ const App = () => {
         />
         <Route
           path="/hourly-temperature"
-          element={<HourlyTemperatureComponent lat={selectedCity.lat} lon={selectedCity.lon} />}
+          element={
+            selectedCity ? (
+              <HourlyTemperatureComponent lat={selectedCity.lat} lon={selectedCity.lon} />
+            ) : (
+              <p>Please select a city first to view hourly data.</p>
+            )
+          }
         />
       </Routes>
     </Router>
   );
 };
-
 
 export default App;
