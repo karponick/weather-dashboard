@@ -16,7 +16,8 @@ const WeatherDetails = ({ weatherData }) => {
         <p><strong>Temperature:</strong> {KtoF(weatherData.temperature)}°F</p>
         <p><strong>Feels Like:</strong> {KtoF(weatherData.feels_like)}°F</p>
         <p><strong>Description:</strong> {weatherData.description.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</p>
-        {/* <p><strong>Humidity:</strong> {weatherData.humidity}%</p>
+        {/* THIS INFORMATION IS DISPLAYED THROUGH THE AIR AND SUN COMPONENTS
+        <p><strong>Humidity:</strong> {weatherData.humidity}%</p>
         <p><strong>Wind Speed:</strong> {weatherData.wind_speed} mph</p>
         <p><strong>Sunrise:</strong> {weatherData.sunrise}</p>
         <p><strong>Sunset:</strong> {weatherData.sunset}</p> */}
