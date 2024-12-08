@@ -28,6 +28,19 @@ a:hover {
   text-decoration: none;
 }
 
+.tempButton {
+  background-color: #e63946;
+  color: #f1faee;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
 /* media queries */
 
 @media (max-width: 768px) {

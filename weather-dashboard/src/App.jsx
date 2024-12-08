@@ -13,6 +13,7 @@ const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [airData, setAirData] = useState(null);
   const [sunData, setSunData] = useState(null);
+  const [isFahrenheit, setIsFahrenheit] = useState(true);
 
   const handleCitySelect = async (city) => {
     setSelectedCity(city);
@@ -40,6 +41,10 @@ const App = () => {
     }
   };
 
+  const toggleTemperatureUnit = () => {
+    setIsFahrenheit(!isFahrenheit);
+  };
+
   return (
     <Router>
       <Routes>
@@ -50,9 +55,17 @@ const App = () => {
               <SearchBar onCitySelect={handleCitySelect} />
               {weatherData && (
                 <>
-                  <div class="hourly">
+                <div className="button">
+                  <button onClick={toggleTemperatureUnit} className="tempButton">
+                    {isFahrenheit ? "Switch to °C" : "Switch to °F"}
+                  </button>
+                </div>
+                  <div className="hourly">
                     <Link to="/hourly-temperature">
-                      <WeatherDetails weatherData={weatherData} />
+                      <WeatherDetails
+                        weatherData={weatherData}
+                        isFahrenheit={isFahrenheit}
+                      />
                     </Link>
                   </div>
                   <AirDetails airData={airData} />
@@ -73,7 +86,7 @@ const App = () => {
           }
         />
       </Routes>
-    </Router >
+    </Router>
   );
 };
 
