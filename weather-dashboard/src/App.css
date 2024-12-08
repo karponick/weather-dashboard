@@ -8,9 +8,13 @@
 }
 
 .hourly {
-  font-style: normal;
-  width: 32.4%;
+  width: 30%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #1d3557;
   margin: auto;
+  background-color: #1d3557;
 }
 
 .hourly:hover {
@@ -22,4 +26,18 @@ a:visited,
 a:hover {
   color: black;
   text-decoration: none;
+}
+
+/* media queries */
+
+@media (max-width: 768px) {
+  .hourly {
+      width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hourly {
+        width: 90%;
+    }
 }

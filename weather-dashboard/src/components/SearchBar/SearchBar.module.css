@@ -78,3 +78,73 @@
     width: 50x;
     height: 50px;
 }
+
+/* media queries */
+
+@media (max-width: 768px) {
+    .searchBar {
+        width: 80%;
+        padding: 15px;
+    }
+
+    .searchBar h1 {
+        font-size: 1.5em;
+    }
+
+    .searchBar h2 {
+        font-size: 1em;
+    }
+
+    .input {
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .resultsContainer {
+        max-width: 100%;
+        box-shadow: none;
+    }
+
+    .city {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .searchBar {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    .searchBar h1 {
+        font-size: 1.2em;
+    }
+
+    .searchBar h2 {
+        font-size: 0.9em;
+    }
+
+    .input {
+        height: 40px;
+        font-size: 14px;
+        padding-left: 15px;
+    }
+
+    .resultsContainer {
+        box-shadow: none;
+    }
+
+    .city {
+        font-size: 0.7em;
+        padding: 3px;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .noResults {
+        font-size: 1.5em;
+    }
+}

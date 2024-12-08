@@ -21,6 +21,7 @@ const WeatherDetails = ({ weatherData }) => {
         <p><strong>Wind Speed:</strong> {weatherData.wind_speed} mph</p>
         <p><strong>Sunrise:</strong> {weatherData.sunrise}</p>
         <p><strong>Sunset:</strong> {weatherData.sunset}</p> */}
+        <p className={styles.smallMsg}>-Click for Hourly Temperature-</p>
       </div>
     </div>
   );
