@@ -48,13 +48,15 @@ const SearchBar = (props) => {
     };
     return (
         <div className={styles.searchBar}>
-            <h1>City Search</h1>
+            <h1>Weather Dashboard</h1>
+            <h2>Powered by: </h2><a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+            <img src="/openweather.png" alt="OpenWeather" className={styles.icon}/></a>
             <form>
-                <input className={styles.input} type="text" name="city" id="city" onChange={handleInput} onKeyUp={fetchCities} />
-                {results.length === 0 ? <p>No results</p> : null}
+                <input className={styles.input} type="text" name="city" id="city" placeholder="Search city..." onChange={handleInput} onKeyUp={fetchCities} />
+                {results.length === 0 ? <p className={styles.noResults}>No results</p> : null}
             </form>
             {results && (
-                <div>
+                <div className={styles.resultsContainer}>
                     {results.map((results, index) => (
                         <div key={index}>
                             <div id={"city" + index} name={index} className={styles.city} onClick={handleClick}>{results.name}, {results.state}, {results.country}</div>

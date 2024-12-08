@@ -1,5 +1,6 @@
 .weatherDetails {
     border: 1px solid black;
-    background-color: lightyellow;
+    background-color: #1d3557;
     padding: 1em;
+    color: #f1faee;   
 }
