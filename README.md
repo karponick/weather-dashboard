@@ -1,33 +1,34 @@
 # Weather-Dashboard
 
-This app features a city search bar with a recommended autocomplete. 
-When selecting a city, you are able to view essential whether data such as:
-- temperature
-- "feels like" temperature
-- weather description (e.g., sunny, overcast)
-- humidity
-- wind speed
-- sunrise/sunset times
+## Overview
+This Weather Dashboard is a React-based application that allows users to search for cities and view detailed weather information. This project leverages the OpenWeather API to provide real-time weather details, including temperature, air quality, and sun information. Users can also view an hourly temperature forecast.
 
 ## Getting Started
+### View the webapp deployed on Render: https://weather-dashboard-frontend-bjwu.onrender.com/<br>
+*NOTE: server may experience delays after periods of inactivty
 
-Add .env to both front and backend folders
+### Or grab a copy and modify it for yourself:
+1. Download/clone repository locally.
+2. Add .env file to both front and backend folders
 
-### Backend .env file: 
-API_KEY={your own OpenWeather API key}
+- Backend .env file: <br/>
+"API_KEY=\<your own OpenWeather API key\>"
 
-### Frontend .env file:
-REACT_APP_API_URL=http://localhost:3000/api/data
-PORT=3001
+- Frontend .env file:<br/>
+"REACT_APP_API_CITY_URL=http://localhost:3000/api/city<br/>
+REACT_APP_API_WEATHER_URL=http://localhost:3000/api/weather<br/>
+PORT=3001"
 
 ### Open a terminal in the backend folder:
-install package:
-- npm install express<br/>
+install packages:
+- npm install<br/>
+
 Start backend:
 - node server.mjs
 
 ### Open a terminal in the frontend folder:
-install package:
-- npm install react-scripts<br/>
+install packages:
+- npm install<br/>
+
 Start frontend:
 - npm start
